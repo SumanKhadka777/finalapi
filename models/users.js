@@ -1,13 +1,13 @@
 const mongoose=require('mongoose');
 
 const userSchema= new mongoose.Schema({
-    Username:{
+    username:{
         type: String,
         required: true,
         unique: true,
         minlength: 6
     },
-    Gender:{
+    gender:{
         type: String,
         required: true, 
     },
