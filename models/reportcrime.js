@@ -5,23 +5,23 @@ const reportSchema=new mongoose.Schema({
         require:true,
         
     },
-    Phonenumber:{
+    phonenumber:{
             type:String,
             require:true,
     },
-    Crimedetails:{
+    crimedetails:{
         type:String,
             require:true,
 
 
     },
-    Location:{
+    location:{
         type:String,
             require:true,
 
 
     },
-    Areacode:{
+    areapincode:{
         type:String,
         require:true,
 

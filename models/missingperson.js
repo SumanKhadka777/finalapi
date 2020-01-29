@@ -5,7 +5,7 @@ const missingSchema=new mongoose.Schema({
             required:true,
 
         },
-        Address:{
+        address:{
             type:String,
             required:true,
 
@@ -15,7 +15,7 @@ const missingSchema=new mongoose.Schema({
 
 
         },
-        Description:{
+        description:{
             type:String,
             required:true,
    

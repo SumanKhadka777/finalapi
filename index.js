@@ -6,8 +6,11 @@ const userRouter = require('./routes/users');
 const dotenv = require('dotenv').config();
 const auth = require('./auth');
 ;
-
+const reportRouter = require('./routes/reportcrime');
 const cors = require('cors');
+const missingRouter=require('./routes/missingperson');
+
+
 
 
 const app = express();
@@ -26,7 +29,9 @@ mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: t
     }, (err) => console.log(err));
 
     app.use('/users', userRouter);
-
+    app.use(auth.verifyUser);
+    app.use('/report', reportRouter);
+    app.use('/missing',missingRouter)
 
     app.listen(process.env.PORT, () => {
         console.log(`App is running at localhost:${process.env.PORT}`);
