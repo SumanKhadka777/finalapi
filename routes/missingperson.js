@@ -15,6 +15,13 @@ router.post("/addmissingperson",(req,res,next) => {
 
         res.json({ status: "Missing person reported!"});
     }).catch(next);
+
+    router.put('/updatemissing', (req, res, next) => {
+        Missingperson.findByIdAndUpdate(req.reportid, { $set: req.body }, { new: true })
+            .then((Report) => {
+                res.json({ fullname: Missingperson.fullname, address: Missingperson.address, description: Missingperson.description,missingstatus: Missingperson.missingstatus });
+            })
+        });
 });
 
 module.exports = router;
