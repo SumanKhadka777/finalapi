@@ -1,9 +1,14 @@
 const mongoose=require('mongoose');
 const missingSchema=new mongoose.Schema({
+
+    missingid:{
+        type:String,
+        require:true,
+    },
+
         fullname:{
             type:String,
             required:true,
-
         },
         address:{
             type:String,
@@ -12,8 +17,6 @@ const missingSchema=new mongoose.Schema({
         },
         missingImage:{
             type:String
-
-
         },
         description:{
             type:String,
@@ -24,8 +27,6 @@ const missingSchema=new mongoose.Schema({
         missingstatus:{
             type:Boolean,
             default:true,
-            
-
         }
 
 

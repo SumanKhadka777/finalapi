@@ -36,4 +36,4 @@ mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: t
 
     app.listen(process.env.PORT, () => {
         console.log(`App is running at localhost:${process.env.PORT}`);
-    });
+    });   
