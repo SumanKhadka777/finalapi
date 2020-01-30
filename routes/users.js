@@ -20,6 +20,7 @@ router.post('/signup', (req, res, next) => {
             password: hash,
             address:req.body.address,
             
+            
         }).then((user) => {
             let token = jwt.sign({ _id: user._id }, process.env.SECRET);
             res.json({ status: "Signup success!", token: token });

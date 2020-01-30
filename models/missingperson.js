@@ -21,6 +21,12 @@ const missingSchema=new mongoose.Schema({
    
 
         },
+        missingstatus:{
+            type:Boolean,
+            default:true,
+            
+
+        }
 
 
 })

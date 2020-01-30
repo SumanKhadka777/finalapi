@@ -8,9 +8,11 @@ router.post("/addmissingperson",(req,res,next) => {
         fullname:req.body.fullname,
         address:req.body.address,
         image:req.body.image,
-        description:req.body.description
+        description:req.body.description,
+        missingstatus:req.body.missingstatus
+
     }).then(() => {
-    
+
         res.json({ status: "Missing person reported!"});
     }).catch(next);
 });
