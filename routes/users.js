@@ -19,7 +19,7 @@ router.post('/signup', (req, res, next) => {
             email:req.body.email,
             password: hash,
             address:req.body.address,
-            
+                    
             
         }).then((user) => {
             let token = jwt.sign({ _id: user._id }, process.env.SECRET);
@@ -30,6 +30,7 @@ router.post('/signup', (req, res, next) => {
 
 
 router.post('/login', (req, res, next) => {
+    console.log(req.body.username )
     User.findOne({ username: req.body.username })
         .then((user) => {
             if (user == null) {
@@ -45,7 +46,8 @@ router.post('/login', (req, res, next) => {
                             return next(err);
                         }
                         let token = jwt.sign({ _id: user._id }, process.env.SECRET);
-                        res.json({ status: 'Login success!', token: token });
+                        res.status(200  )
+                        res.json({code:200, status: 'Login success!', token: token });
                     }).catch(next);
             }
         }).catch(next);     

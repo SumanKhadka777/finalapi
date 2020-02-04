@@ -2,28 +2,28 @@ const mongoose=require('mongoose');
 const reportSchema=new mongoose.Schema({
     reportid:{
         type:String,
-        require:true,
+        // require:true,
         
     },
     phonenumber:{
             type:String,
-            require:true,
+            // require:true,
     },
     crimedetails:{
         type:String,
-            require:true,
+            // require:true,
 
 
     },
     location:{
         type:String,
-            require:true,
+            // require:true,
 
 
     },
     areapincode:{
         type:String,
-        require:true,
+        // require:true,
 
 
 

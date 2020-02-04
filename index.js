@@ -29,11 +29,10 @@ mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: t
     }, (err) => console.log(err));
 
     app.use('/users', userRouter);
-    app.use(auth.verifyUser);
+     app.use(auth.verifyUser);
     app.use('/report', reportRouter);
     app.use('/missing',missingRouter);
     app.use('/missingphoto',uploadRouter);
-
     app.listen(process.env.PORT, () => {
         console.log(`App is running at localhost:${process.env.PORT}`);
     });   
