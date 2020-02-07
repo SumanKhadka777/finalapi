@@ -26,12 +26,53 @@ router.post("/addmissingperson",(req,res,next) => {
         res.json({ status: "Missing person reported!"});
     }).catch(next);
 
-    router.put('/updatemissing/:id', (req, res, next) => {
-        Missingperson.findByIdAndUpdate(req.missingid, { $set: req.body }, { new: true })
-            .then((Missingperson) => {
-                res.json({ fullname: Missingperson.fullname, address: Missingperson.address, description: Missingperson.description,missingstatus: Missingperson.missingstatus });
-            })
+    // router.put("/updatemissing",(req,res,next) =>{
+	
+    //     Missingperson.update({
+    //         fullname:req.body.address,
+    //         address:req.body.username,
+    //         missingImage:req.body.missingImage,
+    //         description:req.body.description,
+    //         missingstatus:req.body.missingstatus            
+    //     },{
+    //         where:{
+    //             id:req.params.id
+    //         }
+    //     })
+    //     .then(function(result){
+    //         if(result === 0 ){
+    //             res.json({status:404,message:'User not found, so not updated'})
+    //         }
+    //         else{
+    //             res.json({status:200,message:'User updated'})
+    
+    //         }
+    //     })
+    // .catch(function(err){
+    //     res.json({status:500,message:'Error updating user !'})
+    // })
+    // })
+
+    router.put('/updatemissing/:id',  (req, res, next) => {
+        console.log("chalyo")
+     Missingperson.findById(req.params.id)  
+     .then((missingperson)=>{
+        missingperson._id=req.params.id
+        missingperson.fullname=req.body.fullname
+        missingperson.address=req.body.address
+        missingperson.image=missingperson.image
+        missing.description=req.body.description
+        missingperson.missingstatus=missingperson.missingstatus
+
+        missingperson.save()
+        .then((missingperson)=>{
+            res.json(missingperson)
+        }).catch(next)
+        })
+
         });
+
+
 
         router.delete('/deletemissing/:id',  (req, res, next) => {
             Missingperson.findByIdAndDelete(req.missingid)

@@ -5,18 +5,16 @@ const userSchema= new mongoose.Schema({
     userid:{
         type:String,
         require:true,},
-
-        
     username:{
         type: String,
         required: true,
         unique: true,
         minlength: 6
     },
-    gender:{
-        type: String,
-        required: true, 
-    },
+    // gender:{
+    //     type: String,
+    //     required: true, 
+    // },
     email:{ 
         type:String,
         require:true,

@@ -15,11 +15,38 @@ router.post("/addreport",(req,res,next) => {
     }).catch(next);
 });
 
-router.put('/updatereport/:id', (req, res, next) => {
-    reportcrime.findByIdAndUpdate(req.reportid, { $set: req.body }, { new: true })
-        .then((Report) => {
-            res.json({ phonenumber: Report.phonenumber, crimedetails: Report.crimedetails, location: Report.location,areapincode: Report.areapincode });
-        }).catch(next);
+// router.put('/updatereport/:id', (req, res, next) => {
+//     reportcrime.findByIdAndUpdate(req.params.id)
+//         .then((Report) => {
+            
+//                 phonenumber: Report.phonenumber,
+//                  crimedetails: Report.crimedetails, 
+//                  location: Report.location,
+//                  areapincode: Report.areapincode 
+
+//             reportcrime.save()
+//             .then((reportcrime)=>{
+//                 res.json(reportcrime)
+//         }).catch(next);
+//     });
+
+router.put('/updatereport/:id',  (req, res, next) => {
+    console.log("chalyo")
+ reportcrime.findById(req.params.id)  
+ .then((reportcrime)=>{
+    reportcrime._id=req.params.id
+    reportcrime.phonenumber=req.body.phonenumber
+    reportcrime.crimedetails=req.body.crimedetails
+    // reportcrime.image=missingperson.image
+    reportcrime.location=req.body.location
+    reportcrime.areapincode=req.body.areapincode
+
+    reportcrime.save()
+    .then((reportcrime)=>{
+        res.json(reportcrime)
+    }).catch(next)
+    })
+
     });
 
     router.delete('/deletereport/:id',  (req, res, next) => {

@@ -15,7 +15,7 @@ router.post('/signup', (req, res, next) => {
         }
         User.create({
             username: req.body.username,
-            gender:req.body.gender,
+            // gender:req.body.gender,
             email:req.body.email,
             password: hash,
             address:req.body.address,
@@ -54,7 +54,8 @@ router.post('/login', (req, res, next) => {
 });
 router.get('/me', auth.verifyUser, (req, res, next) => {
     console.log(req.user)
-    res.json({ _id: req.user._id,username: req.user.username,gender: req.user.gender,email:req.user.email,password: req.user.password,address: req.user.address });
+    res.json({ _id: req.user._id,username: req.user.username,email:req.user.email,password: req.user.password,address: req.user.address });
+        //gender: req.user.gender,
 });
 
 

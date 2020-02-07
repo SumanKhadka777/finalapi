@@ -5,16 +5,14 @@ const userRouter = require('./routes/users');
 const uploadRouter = require('./routes/upload');
 const dotenv = require('dotenv').config();
 const auth = require('./auth');
-;
 const reportRouter = require('./routes/reportcrime');
 const cors = require('cors');
 const missingRouter=require('./routes/missingperson');
-
+//const updatemissing=require('./routes/missingperson');
 
 
 
 const app = express();
-
 app.use(morgan('tiny'));
 app.use(express.json());
 app.options('*', cors());
@@ -33,6 +31,7 @@ mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: t
     app.use('/report', reportRouter);
     app.use('/missing',missingRouter);
     app.use('/missingphoto',uploadRouter);
+    // app.use('/missing',missingRouter);
     app.listen(process.env.PORT, () => {
         console.log(`App is running at localhost:${process.env.PORT}`);
     });   
