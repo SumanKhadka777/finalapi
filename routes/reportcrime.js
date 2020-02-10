@@ -5,6 +5,7 @@ const router = express.Router();
 router.post("/addreport",(req,res,next) => {
     console.log('chalu')
     reportcrime.create({
+
        phonenumber:req.body.phonenumber,
        crimedetails:req.body.crimedetails,
        location:req.body.location,
@@ -51,8 +52,8 @@ router.put('/updatereport/:id',  (req, res, next) => {
 
     router.delete('/deletereport/:id',  (req, res, next) => {
         reportcrime.findByIdAndDelete(req.reportid)
-            .then((report) => {
-                res.json({ status: 'Report deleted!', Report: report })
+            .then((reportcrime) => {
+                res.json({ status: 'Report deleted!', Report: reportcrime })
             }).catch(next);
     });
 

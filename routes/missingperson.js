@@ -65,7 +65,7 @@ router.post("/addmissingperson",(req,res,next) => {
         missingperson.missingstatus=missingperson.missingstatus
 
         missingperson.save()
-        .then((missingperson)=>{
+        .then((missingperson)=>{ 
             res.json(missingperson)
         }).catch(next)
         })
