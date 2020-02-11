@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/users');
 const router = express.Router();
 const auth = require('../auth');
-
+//register user 
 router.post('/signup', (req, res, next) => {
     let password = req.body.password;
     bcrypt.hash(password, 10, function (err, hash) {
@@ -28,7 +28,7 @@ router.post('/signup', (req, res, next) => {
     });
 });
 
-
+//Login user 
 router.post('/login', (req, res, next) => {
     console.log(req.body.username )
     User.findOne({ username: req.body.username })
@@ -52,6 +52,8 @@ router.post('/login', (req, res, next) => {
             }
         }).catch(next);     
 });
+
+// get user data
 router.get('/me', auth.verifyUser, (req, res, next) => {
     console.log(req.user)
     res.json({ _id: req.user._id,username: req.user.username,email:req.user.email,password: req.user.password,address: req.user.address });

@@ -3,6 +3,7 @@ const Missingperson = require('../models/missingperson');
 const router = express.Router();
 const missing = require('../auth')
 
+// getmissing person id
 router.get('/getmissing/:id', (req, res, next) => {
     Missingperson.findById(req.params.id)
         .then((Missingperson) => {
@@ -12,7 +13,7 @@ router.get('/getmissing/:id', (req, res, next) => {
     });
 
 
-
+//add missing person
 router.post("/addmissingperson",(req,res,next) => {
     Missingperson.create({
         fullname:req.body.fullname,
@@ -26,33 +27,7 @@ router.post("/addmissingperson",(req,res,next) => {
         res.json({ status: "Missing person reported!"});
     }).catch(next);
 
-    // router.put("/updatemissing",(req,res,next) =>{
-	
-    //     Missingperson.update({
-    //         fullname:req.body.address,
-    //         address:req.body.username,
-    //         missingImage:req.body.missingImage,
-    //         description:req.body.description,
-    //         missingstatus:req.body.missingstatus            
-    //     },{
-    //         where:{
-    //             id:req.params.id
-    //         }
-    //     })
-    //     .then(function(result){
-    //         if(result === 0 ){
-    //             res.json({status:404,message:'User not found, so not updated'})
-    //         }
-    //         else{
-    //             res.json({status:200,message:'User updated'})
-    
-    //         }
-    //     })
-    // .catch(function(err){
-    //     res.json({status:500,message:'Error updating user !'})
-    // })
-    // })
-
+//Update missing person data
     router.put('/updatemissing/:id',  (req, res, next) => {
         console.log("chalyo")
      Missingperson.findById(req.params.id)  
@@ -72,7 +47,7 @@ router.post("/addmissingperson",(req,res,next) => {
 
         });
 
-
+//delete missing person
 
         router.delete('/deletemissing/:id',  (req, res, next) => {
             Missingperson.findByIdAndDelete(req.missingid)

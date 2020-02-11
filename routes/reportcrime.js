@@ -1,7 +1,7 @@
 const express = require('express');
 const reportcrime = require('../models/reportcrime');
 const router = express.Router();
-
+// add crimereport
 router.post("/addreport",(req,res,next) => {
     console.log('chalu')
     reportcrime.create({
@@ -16,21 +16,7 @@ router.post("/addreport",(req,res,next) => {
     }).catch(next);
 });
 
-// router.put('/updatereport/:id', (req, res, next) => {
-//     reportcrime.findByIdAndUpdate(req.params.id)
-//         .then((Report) => {
-            
-//                 phonenumber: Report.phonenumber,
-//                  crimedetails: Report.crimedetails, 
-//                  location: Report.location,
-//                  areapincode: Report.areapincode 
-
-//             reportcrime.save()
-//             .then((reportcrime)=>{
-//                 res.json(reportcrime)
-//         }).catch(next);
-//     });
-
+//Update crime report
 router.put('/updatereport/:id',  (req, res, next) => {
     console.log("chalyo")
  reportcrime.findById(req.params.id)  
@@ -49,7 +35,7 @@ router.put('/updatereport/:id',  (req, res, next) => {
     })
 
     });
-
+//Delete crimereport 
     router.delete('/deletereport/:id',  (req, res, next) => {
         reportcrime.findByIdAndDelete(req.reportid)
             .then((reportcrime) => {
